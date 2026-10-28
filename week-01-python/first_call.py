@@ -17,7 +17,7 @@ class Invoice(BaseModel):
 PROMPT = (
     "Extract vendor, total (number only) and ISO currency code from this text. "
     "Correct obvious typos in the vendor name and use proper capitalization. "
-    "The total is the final amount due, not a subtotal or advance.\n\n{text}"
+    "The total is the final amount due for THIS invoice only. Do not include subtotals, advances or previous balances.\n\n{text}"
 )
 
 
@@ -66,6 +66,10 @@ TESTS = [
     (
         "Invoice no 77 from kumar electricals. Amount: 8,400/-",
         Invoice(vendor="Kumar Electricals", total=8400, currency="INR"),
+    ),
+    (
+        "om sai stores bill. items 1,800 + GST 18% 324 = 2,124. Previous balance 5,000 not included.",
+        Invoice(vendor="Om Sai Stores", total=2124, currency="INR"),
     ),
 ]
 
