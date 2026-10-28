@@ -55,6 +55,18 @@ TESTS = [
         "gupta dairy - milk 10 x 450 = 4500 - GST 5% 225 - grand total Rs 4,725",
         Invoice(vendor="Gupta Dairy", total=4725, currency="INR"),
     ),
+    (
+        "Bill from Patel Hardware. Total payable: Rs 1,20,500 (one lakh twenty thousand five hundred).",
+        Invoice(vendor="Patel Hardware", total=120500, currency="INR"),
+    ),
+    (
+        "Receipt: Fresh Mart, USD 89.99 paid by card",
+        Invoice(vendor="Fresh Mart", total=89.99, currency="USD"),
+    ),
+    (
+        "Invoice no 77 from kumar electricals. Amount: 8,400/-",
+        Invoice(vendor="Kumar Electricals", total=8400, currency="INR"),
+    ),
 ]
 
 print(f"Model: {MODEL}\n")
